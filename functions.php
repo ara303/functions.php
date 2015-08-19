@@ -1,7 +1,10 @@
+<?php
+
+
 
 /*
  * @Ed Adams for Excellence: remove width="" and height="" from uploaded images.
- * Credit: http://wordpress.stackexchange.com/a/29886
+ * Credit: https://gist.github.com/stuntbox/4557917#gistcomment-1257963
  */
 function ea_remove_img_dimensions($html) {
   if (preg_match_all('/<img[^>]+>/ims', $html, $matches)) {
@@ -58,3 +61,7 @@ function ea_default_attachment_settings() {
   update_option( 'image_default_size', 'full' );
 }
 add_action( 'after_setup_theme', 'ea_default_attachment_settings' );
+
+
+
+?>
