@@ -1,3 +1,21 @@
+
+/*
+ * @Ed Adams for Excellence: remove width="" and height="" from uploaded images.
+ * Credit: http://wordpress.stackexchange.com/a/29886
+ */
+function ea_remove_img_dimensions($html) {
+  if (preg_match_all('/<img[^>]+>/ims', $html, $matches)) {
+    foreach ($matches as $match) {
+      $clean = preg_replace('/(width|height)=["\'\d%\s]+/ims', "", $match);
+      $html = str_replace($match, $clean, $html); 
+    }
+  }
+  return $html;
+}
+add_filter('post_thumbnail_html', 'ea_remove_img_dimensions', 30);
+add_filter('the_content', 'ea_remove_img_dimensions', 30);
+add_filter('get_avatar','ea_remove_img_dimensions', 30);
+
 /* 
  * by Ed Adams: custom CSS for the WP-Admin area for non-administrator users.
  * This should be expanded with some CSS to apply when viewing pages with the WordPress top bar in the future, as some functions hidden here will be visible there.
