@@ -11,4 +11,4 @@ In chronological order...
 
 # In the future
 
-* I would like to explore prevent a user-created image with caption from having a fixed `height`. I currently override this in CSS: `.wp-caption { max-width: auto; height: auto; }`
+* I would like to prevent a user-created image caption from having a `height` attribute. I currently override this in CSS: `.wp-caption { max-width: auto; height: auto; }`
