@@ -3,7 +3,7 @@
 
 
 /**
- * by Ed Adams: remove width="" and height="" from uploaded images.
+ * Remove width="" and height="" from images as they're uploaded.
  * Credit: https://gist.github.com/stuntbox/4557917#gistcomment-1257963
  */
 function ea_remove_img_dimensions($html) {
@@ -20,8 +20,17 @@ add_filter('the_content', 'ea_remove_img_dimensions', 30);
 add_filter('get_avatar','ea_remove_img_dimensions', 30);
 
 /**
- * by Ed Adams: custom CSS for the WP-Admin area for non-administrator users.
- * This should be expanded with some CSS to apply when viewing pages with the WordPress top bar in the future, as some functions hidden here will be visible there.
+ * Stop Jetpack from adding a JS plugin called 'devicepx' that adds back image width/height attributes via JS.
+ */
+function remove_jetpack_devicepx() {
+    wp_dequeue_script( 'devicepx' );
+}
+add_action( 'wp_enqueue_scripts', 'remove_jetpack_devicepx', 20 );
+
+
+/**
+ * Custom CSS for the WP-Admin area for non-administrator users.
+ * Does not currently work when viewing site pages, only in WP-Admin.
  */
 function ea_css_for_admin() {
   if( !current_user_can( 'activate_plugins' )) {
@@ -36,9 +45,9 @@ add_action( 'admin_head', 'ea_css_for_admin' );
 
 
 
-/*
- * by Ed Adams: custom Dashboard box.
- * Second parameter in wp_add_dashboard_widget is the title, third parameter is the function call which echos the content. HTML safe.
+/**
+ * Custom Dashboard box.
+ * Second param in wp_add_dashboard_widget is the box title, third  is the function call which echos the content. HTML-safe.
  */
 function ea_add_dashboard_boxes() {
   global $wp_meta_boxes;
@@ -51,9 +60,8 @@ add_action( 'wp_dashboard_setup', 'ea_add_dashboard_boxes' );
 
 
 
-/*
- * by Ed Adams: set the defaults for user-uploaded images to display at full sizes and use sensible defaults.
- * Sensible defaults when uploading media, as I don't want editors to have to always define that images shouldn't display as thumbnails.
+/**
+ * Set the defaults for user-uploaded images to display at full sizes and use sensible defaults.
  */
 function ea_default_attachment_settings() {
   update_option( 'image_default_align', 'none' );
