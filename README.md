@@ -1,14 +1,12 @@
 # functions.php
-WordPress functions that are useful to me.
+Reusable WordPress functions to be installed in your theme's `functions.php`. In order...
 
-## Currently 
-In chronological order...
+- Remove `width` and `height` attributes from `<img>`s uploaded in the Media Uploader. This does not work retroactively on already uploaded images.
+- Remove `devicepx` which is added by Jetpack which adds back `width` and `height` attributes on `<img>`s inline. *Only use this if you're using Jetpack.*
+- Add custom CSS for non-admin users to WP Admin, useful for hiding stuff you don't want clients to see.
+- Add a box to the WP Admin Dashboard page, useful for displaying any information your clients might need to see. I generally use this to link to "how to WordPress" guides and tech support information.
+- Set sensible default options for the Media Uploader when a user embeds attachments. Use the full-size image URL, no alignment, and won't  wrap it in a link.
 
-1. Prevent uploaded `img`s from having inline `width` and `height` attributes (does not work retroactively on already uploaded images).
-2. Custom CSS for non-admin users in the WordPress control panel, useful for hiding stuff editors *won't* need.
-3. Custom Dashboard box for all users in the WordPress control panel, useful for displaying system-specific stuff editors *will* need.
-4. Set sensible default options when user embed attachments (images, etc.) via WordPress editor, so it defaults to the full-size image URL, doesn't align it, and doesn't try to wrap it in a link.
+### In the future
 
-## In the future
-
-* I would like to prevent a user-created image caption from having a `height` attribute. I currently override this in CSS: `.wp-caption { max-width: auto; height: auto; }`
+* I would like to prevent a user-created image caption from having a `height` attribute but couldn't find a function to do it. I currently override it in CSS: `.wp-caption { max-width: auto; height: auto; }`
