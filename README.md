@@ -6,6 +6,7 @@ Reusable WordPress functions to be installed in your theme's `functions.php`. In
 - Add custom CSS for non-admin users to WP Admin, useful for hiding stuff you don't want clients to see.
 - Add a box to the WP Admin Dashboard page, useful for displaying any information your clients might need to see. I generally use this to link to "how to WordPress" guides and tech support information.
 - Set sensible default options for the Media Uploader when a user embeds attachments. Use the full-size image URL, no alignment, and won't  wrap it in a link.
+- Hide the WordPress logo on the WP Admin login page. (I'd like to add more code to minimize the amount of WordPress branding elements on each page at some point.)
 
 ### In the future
 

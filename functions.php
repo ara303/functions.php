@@ -81,4 +81,12 @@
   }
   add_action( 'after_setup_theme', 'ea_default_attachment_settings' );
 
+
+  /**
+   * Remove WordPress logo on login page.
+   */
+  function remove_wp_logo_on_login() {
+    echo '<style>.login h1{display:none !important}</style>';
+  }
+  add_action( 'login_enqueue_scripts', 'remove_wp_logo_on_login' );
 ?>
